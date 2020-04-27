@@ -1,3 +1,5 @@
+(Note: The `README.md` file was put together by the course Professor, Roger Peng along with the `./figure` subdirectory which contains the images for the README. The student submitted work are the `*.r` script files and `*.png` graphics files, all located in the project's root directory. The `.Rproj` and `.gitignore` files are used by RStudio and stored by GitHub as part of a standard repository-based project.)
+
 ## Introduction
 
 This assignment uses data from
