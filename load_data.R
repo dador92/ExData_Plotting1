@@ -5,6 +5,12 @@
 ## for reuse.
 
 
+## USAGE: graphing scripts should initially load this script and call load_data()
+## IMPORTANT: data set does not get loaded or reloaded unless:
+##            (a) data set is missing from global envrionment, or
+##            (b) call to load_data() has the startClean arg equal to TRUE
+
+
 library(curl)
 library(readr)
 library(data.table)

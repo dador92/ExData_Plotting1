@@ -11,6 +11,10 @@ source("load_data.R")
 load_data()
 
 
+# reset the graphical parameters
+dev.off()
+
+
 # plot the graph
 lab.x.axis = "Global Active Power (kilowatts)"
 hist(house.power$active.power, main = "Global Active Power", xlab=lab.x.axis, col="red")
