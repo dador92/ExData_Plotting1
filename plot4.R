@@ -2,6 +2,13 @@
 ## creates and save the graphic titled plot4.png as defined by the assignment
 
 
+## NOTE TO GRADERS:
+## I have changed one of the legend text labels to better describe what the graph displays.
+## I feel that SQL-type labels like "Sub_metering_2" inhibit analysis.
+## In order to display the legend in full, I had to move the legend to the top center,
+## and hide the delimiting box (which was too narrow).
+
+
 # libraries
 # nothing -- taken care in load_data.R
 
