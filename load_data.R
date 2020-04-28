@@ -1,4 +1,4 @@
-## load_data.r
+## load_data.R
 ## Loads and cleans the data from the Household Power Consumption 
 ## data set. Since all four drawing scripts need this functionality,
 ## it made sense to drop this functionality into a separate script 
@@ -13,7 +13,7 @@ library(lubridate)
 
 
 ## load_data() loads the data set into a global variable called house.power
-## startClean marks whther the data should be freshly downloaded and read in
+## startClean marks whether the data should be freshly downloaded and read in
 load_data <- function(startClean=FALSE) {
     
     # definitions
@@ -61,7 +61,7 @@ load_data <- function(startClean=FALSE) {
             "sub.meter.3"
         )
         
-        # speed up fread by definiting initial column classes
+        # speed up fread by defining initial column classes
         colclasses = c(
             "character",   # date
             "character",   # time
