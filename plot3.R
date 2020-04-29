@@ -18,26 +18,23 @@ source("load_data.R")
 load_data()
 
 
-# reset the graphical parameters
+# set up the graphical parameters
 dev.off()
+file.plot3 = "./plot3.png"
+png(file=file.plot3, width=480, height=480)
 
 
 # plot the graph
-lab.x.axis = ""
-lab.y.axis = "Energy sub metering"
-with(house.power, plot(date.time, sub.meter.1, type="l", col="black", xlab=lab.x.axis, ylab=lab.y.axis))
-with(house.power, lines(date.time, sub.meter.2, type="l", col="red"))
-with(house.power, lines(date.time, sub.meter.3, type="l", col="blue"))
-legend.full = c(
-    "kitchen (dishwasher, oven, microwave, etc.)",
-    "laundry (washing-machine, tumble-dryer, etc.)",
-    "electric water-heater, air-conditioner")
-legend("top", legend = legend.full, col=c("black", "red", "blue"), lty = 1, box.col="white")
-box(which="plot", lty="solid")
+lab.x.axis = "Day"
+lab.y.axis = "Energy Sub Metering"
+with(house.power, {
+    plot(date.time, smtr.kitchen, type="l", col="black", xlab=lab.x.axis, ylab=lab.y.axis);
+    lines(date.time, smtr.laundry, type="l", col="red");
+    lines(date.time, smtr.hvac, type="l", col="blue")
+})
+legend.full = c("kitchen", "laundry", "hvac")
+legend("topright", legend=legend.full, col=c("black", "red", "blue"), lty = 1)
 
 
-# copy the graph to a PNG file
-file.plot3 = "./plot3.png"
-if (file.exists(file.plot3)) file.remove(file.plot3)
-dev.copy(png, file.plot3)  # file gets copied in 480x480 size, so no adjustment needed
+# close the device/PNG file
 dev.off()

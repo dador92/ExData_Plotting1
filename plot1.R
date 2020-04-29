@@ -11,17 +11,16 @@ source("load_data.R")
 load_data()
 
 
-# reset the graphical parameters
+# set up the graphical parameters
 dev.off()
+file.plot1 = "./plot1.png"
+png(file=file.plot1, width=480, height=480)
 
 
 # plot the graph
 lab.x.axis = "Global Active Power (kilowatts)"
-hist(house.power$active.power, main = "Global Active Power", xlab=lab.x.axis, col="red")
+hist(house.power$global.active.pwr, main="Global Active Power", xlab=lab.x.axis, col="red")
 
 
-# copy the graph to a PNG file
-file.plot1 = "./plot1.png"
-if (file.exists(file.plot1)) file.remove(file.plot1)
-dev.copy(png, file.plot1)  # file gets copied in 480x480 size, so no adjustment needed
+# close the device/PNG file
 dev.off()

@@ -18,29 +18,27 @@ source("load_data.R")
 load_data()
 
 
-# reset the graphical parameters
+# set up the graphical parameters
 dev.off()
+file.plot4 = "./plot4.png"
+png(file=file.plot4, width=480, height=480)
 
 
 # plot the graph
-par(mfrow = c(2, 2), mar = c(4, 4, 2, 3), oma = c(2, 2, 2, 2))
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 2), oma = c(1, 1, 1, 1))
 with(house.power, {
-    plot(date.time, active.power, type="l", xlab="", ylab="Global Active Power")
+    plot(date.time, global.active.pwr, type="l", xlab="Day", ylab="Global Active Power")
     
-    plot(date.time, voltage, type="l", xlab="date, time", ylab="Voltage")
+    plot(date.time, voltage, type="l", xlab="Day", ylab="Voltage")
 
-    plot(date.time, sub.meter.1, type="l", col="black", xlab="", ylab="Energy Sub Metering")
-    lines(date.time, sub.meter.2, type="l", col="red")
-    lines(date.time, sub.meter.3, type="l", col="blue")
-    legend("top", legend=c("kitchen", "laundry", "HVAC"), col=c("black", "red", "blue"), lty = 1, box.col="white")
-    box(which="plot", lty="solid")
-    
-    plot(date.time, reactive.power, type="l", xlab="", ylab="Global Reactive Power")
+    plot(date.time, smtr.kitchen, type="l", col="black", xlab="Day", ylab="Energy Sub Metering")
+    lines(date.time, smtr.laundry, type="l", col="red")
+    lines(date.time, smtr.hvac, type="l", col="blue")
+    legend("topright", legend=c("kitchen", "laundry", "hvac"), col=c("black", "red", "blue"), lty = 1)
+
+    plot(date.time, global.reactive.pwr, type="l", xlab="Day", ylab="Global Reactive Power")
 })
 
 
-# copy the graph to a PNG file
-file.plot4 = "./plot4.png"
-if (file.exists(file.plot4)) file.remove(file.plot4)
-dev.copy(png, file.plot4)  # file gets copied in 480x480 size, so no adjustment needed
+# close the device/PNG file
 dev.off()

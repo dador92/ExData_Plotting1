@@ -56,28 +56,28 @@ load_data <- function(startClean=FALSE) {
         
         # define readable column names
         colnames = c(
-            "date.time",      # date & time columns will get collpased
+            "date.time",            # date & time columns will get collpased
             "time",
-            "active.power",
-            "reactive.power",
+            "global.active.pwr",
+            "global.reactive.pwr",
             "voltage",
             "intensity",
-            "sub.meter.1",
-            "sub.meter.2",
-            "sub.meter.3"
+            "smtr.kitchen",         # kitchen with dishwasher, oven, microwave
+            "smtr.laundry",         # laundry room with washing-machine, umble-drier, refrigerator, light
+            "smtr.hvac"             # electric water-heater, air-conditioner
         )
         
         # speed up fread by defining initial column classes
         colclasses = c(
-            "character",   # date
+            "character",   # date.time
             "character",   # time
-            "double",      # active.power
-            "double",      # reactive.power
+            "double",      # global.active.pwr
+            "double",      # global.reactive.pwr
             "double",      # voltage
             "double",      # intensity
-            "numeric",     # sub.meter.1
-            "numeric",     # sub.meter.2
-            "numeric"      # sub.meter.3
+            "numeric",     # smtr.kitchen
+            "numeric",     # smtr.laundry
+            "numeric"      # smtr.hvac
         )
         
         # read in the file and clean it up
@@ -93,7 +93,7 @@ load_data <- function(startClean=FALSE) {
                 na.strings=c("NA", "?")) %>% 
             
             # b. convert the sub-meters to integers
-            mutate_at(c("sub.meter.1", "sub.meter.2", "sub.meter.3"), as.integer) %>%
+            mutate_at(c("smtr.kitchen", "smtr.laundry", "smtr.hvac"), as.integer) %>%
             
             # c. convert the strings for date & time into a usable POSIXct variable
             mutate(date.time = parse_date_time(paste(date.time, time), "%d/%m/%Y %T", exact=TRUE)) %>%
