@@ -18,25 +18,25 @@ source("load_data.R")
 load_data()
 
 
-# set up the graphical parameters
-dev.off()
-file.plot4 = "./plot4.png"
+# set up the device
+file.plot4 <- "./plot4.png"
 png(file=file.plot4, width=480, height=480)
 
 
 # plot the graph
 par(mfrow = c(2, 2), mar = c(4, 4, 2, 2), oma = c(1, 1, 1, 1))
+lab.x.axis <- "Day"
 with(house.power, {
-    plot(date.time, global.active.pwr, type="l", xlab="Day", ylab="Global Active Power")
+    plot(date.time, global.active.pwr, type="l", xlab=lab.x.axis, ylab="Global Active Power")
     
-    plot(date.time, voltage, type="l", xlab="Day", ylab="Voltage")
+    plot(date.time, voltage, type="l", xlab=lab.x.axis, ylab="Voltage")
 
-    plot(date.time, smtr.kitchen, type="l", col="black", xlab="Day", ylab="Energy Sub Metering")
+    plot(date.time, smtr.kitchen, type="l", col="black", xlab=lab.x.axis, ylab="Energy Sub Metering")
     lines(date.time, smtr.laundry, type="l", col="red")
     lines(date.time, smtr.hvac, type="l", col="blue")
     legend("topright", legend=c("kitchen", "laundry", "hvac"), col=c("black", "red", "blue"), lty = 1)
 
-    plot(date.time, global.reactive.pwr, type="l", xlab="Day", ylab="Global Reactive Power")
+    plot(date.time, global.reactive.pwr, type="l", xlab=lab.x.axis, ylab="Global Reactive Power")
 })
 
 

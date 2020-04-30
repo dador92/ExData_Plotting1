@@ -11,14 +11,13 @@ source("load_data.R")
 load_data()
 
 
-# set up the graphical parameters
-dev.off()
-file.plot1 = "./plot1.png"
+# set up the device
+file.plot1 <- "./plot1.png"
 png(file=file.plot1, width=480, height=480)
 
 
 # plot the graph
-lab.x.axis = "Global Active Power (kilowatts)"
+lab.x.axis <- "Global Active Power (kilowatts)"
 hist(house.power$global.active.pwr, main="Global Active Power", xlab=lab.x.axis, col="red")
 
 

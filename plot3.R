@@ -18,21 +18,20 @@ source("load_data.R")
 load_data()
 
 
-# set up the graphical parameters
-dev.off()
+# set up the device
 file.plot3 = "./plot3.png"
 png(file=file.plot3, width=480, height=480)
 
 
 # plot the graph
-lab.x.axis = "Day"
-lab.y.axis = "Energy Sub Metering"
+lab.x.axis <- "Day"
+lab.y.axis <- "Energy Sub Metering"
 with(house.power, {
     plot(date.time, smtr.kitchen, type="l", col="black", xlab=lab.x.axis, ylab=lab.y.axis);
     lines(date.time, smtr.laundry, type="l", col="red");
     lines(date.time, smtr.hvac, type="l", col="blue")
 })
-legend.full = c("kitchen", "laundry", "hvac")
+legend.full <- c("kitchen", "laundry", "hvac")
 legend("topright", legend=legend.full, col=c("black", "red", "blue"), lty = 1)
 
 

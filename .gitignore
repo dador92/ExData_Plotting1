@@ -4,6 +4,7 @@
 .Ruserdata
 .DS_Store
 *.zip
+*.zip.curltmp
 *.txt
 README.html
 scratch.R

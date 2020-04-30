@@ -11,15 +11,15 @@ source("load_data.R")
 load_data()
 
 
-# set up the graphical parameters
-dev.off()
-file.plot2 = "./plot2.png"
+# set up the device
+file.plot2 <- "./plot2.png"
 png(file=file.plot2, width=480, height=480)
 
 
 # plot the graph
-lab.y.axis = "Global Active Power (kilowatts)"
-with(house.power, plot(date.time, global.active.pwr, type="l", xlab="Day", ylab=lab.y.axis))
+lab.x.axis <- "Day"
+lab.y.axis <- "Global Active Power (kilowatts)"
+with(house.power, plot(date.time, global.active.pwr, type="l", xlab=lab.x.axis, ylab=lab.y.axis))
 
 
 # close the device/PNG file
